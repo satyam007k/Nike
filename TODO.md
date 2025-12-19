@@ -1,0 +1,26 @@
+# Nike Clone Project TODO
+
+- [x] Update base.html with Nike branding and modern design
+- [x] Update home.html with hero section and improved product layout
+- [x] Enhance populate.py with more Nike-inspired products
+- [x] Add login/logout functionality to views.py
+- [x] Ensure static files are configured in settings.py
+- [x] Run migrations
+- [x] Populate database with data
+- [x] Test the site locally
+- [x] Add images with products
+  - [x] Change image field in models.py from URLField to ImageField
+  - [x] Update product_list.html template to use {{ product.image.url }}
+  - [x] Update product_detail.html template to use {{ product.image.url }}
+  - [x] Update home.html template to use {{ product.image.url }}
+  - [x] Create and run migration for the model change
+  - [x] Download images from URLs and save as files
+  - [x] Install Pillow for ImageField support
+- [x] Redesign website to look like real Nike
+  - [x] Update base.html with professional Nike-style design
+  - [x] Add proper navigation, footer, and typography
+  - [x] Update all templates with modern card layouts
+  - [x] Add breadcrumbs and improved product displays
+  - [x] Update cart, login, signup, and checkout pages
+  - [x] Add Font Awesome icons and proper styling
+- [x] Remove payment gateway (Stripe integration disabled)

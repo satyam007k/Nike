@@ -1,0 +1,46 @@
+{% extends "nikeapp/base.html" %}
+{% block title %}Join Nike - Sign Up{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+            <div class="product-card card">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="mb-2">Join Nike</h2>
+                        <p class="text-muted">Create your account to start shopping</p>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="{{ form.username.id_for_label }}" class="form-label fw-bold">Username</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger small mt-1">{{ form.username.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-4">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label fw-bold">Password</label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                                <div class="text-danger small mt-1">{{ form.password1.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-4">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label fw-bold">Confirm Password</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="text-danger small mt-1">{{ form.password2.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-nike w-100 py-3 fw-bold mb-3">JOIN US</button>
+                    </form>
+                    <div class="text-center">
+                        <p class="mb-0">Already a member? <a href="{% url 'login' %}" class="text-nike fw-bold">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

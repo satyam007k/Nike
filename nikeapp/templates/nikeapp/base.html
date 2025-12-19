@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nike. Just Do It. Nike.com{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            line-height: 1.5;
+        }
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #000000 !important;
+            letter-spacing: -0.02em;
+        }
+        .navbar-brand:hover {
+            color: #000000 !important;
+        }
+        .nav-link {
+            color: #111111 !important;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #757575 !important;
+        }
+        .btn-nike {
+            background-color: #000000;
+            border-color: #000000;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 2rem;
+            border-radius: 0;
+        }
+        .btn-nike:hover {
+            background-color: #333333;
+            border-color: #333333;
+            color: #ffffff;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #757575;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .product-card:hover {
+            border-color: #111111;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .product-card .card-img-top {
+            aspect-ratio: 1;
+            object-fit: cover;
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+        .product-card .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111111;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-card .card-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 1rem;
+        }
+        .product-card .btn {
+            background-color: #000000;
+            border: 1px solid #000000;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        .product-card .btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111111;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+        }
+        .footer h5 {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #757575;
+        }
+        .footer .social-icons a {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        .copyright {
+            border-top: 1px solid #333333;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: #757575;
+            font-size: 0.8rem;
+        }
+        .form-control {
+            border: 1px solid #e5e5e5;
+            border-radius: 0;
+            padding: 0.75rem 1rem;
+        }
+        .form-control:focus {
+            border-color: #111111;
+            box-shadow: none;
+        }
+        .text-nike {
+            color: #111111;
+            font-weight: 600;
+        }
+        .product-detail-img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            background-color: #f5f5f5;
+        }
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb-item a {
+            color: #757575;
+            text-decoration: none;
+        }
+        .breadcrumb-item.active {
+            color: #111111;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-check-circle me-2"></i>NIKE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-link" href="{% url 'home' %}">New & Featured</a>
+                    {% for category in categories %}
+                    <a class="nav-link" href="{% url 'product_list_by_category' category.slug %}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'cart_detail' %}">
+                        <i class="fas fa-shopping-bag"></i> Cart
+                    </a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'login' %}">Join Us</a>
+                    <a class="nav-link" href="{% url 'signup' %}">Sign In</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Products</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Shoes</a></li>
+                        <li><a href="#">Clothing</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Sports</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Running</a></li>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Football</a></li>
+                        <li><a href="#">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Nike</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 Nike, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

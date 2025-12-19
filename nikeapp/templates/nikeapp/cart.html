@@ -1,0 +1,80 @@
+{% extends "nikeapp/base.html" %}
+{% block title %}Shopping Cart - Nike{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Shopping Cart</h1>
+
+    {% if cart.items.exists %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    {% for item in cart.items.all %}
+                    <div class="row align-items-center mb-3 pb-3 border-bottom">
+                        <div class="col-md-2">
+                            {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" class="img-fluid rounded" alt="{{ item.product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-4">
+                            <h5 class="mb-1">{{ item.product.name }}</h5>
+                            <p class="text-muted mb-0">${{ item.product.price }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a href="{% url 'cart_remove' item.product.id %}" class="btn btn-sm btn-outline-secondary me-2">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                                <span class="mx-3">Qty: {{ item.quantity }}</span>
+                                <a href="{% url 'cart_add' item.product.id %}" class="btn btn-sm btn-outline-secondary ms-2">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <strong>${{ item.get_total }}</strong>
+                            <br>
+                            <a href="{% url 'cart_remove_all' item.product.id %}" class="btn btn-sm btn-outline-danger mt-1">
+                                <i class="fas fa-trash"></i> Remove
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Order Summary</h5>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Subtotal:</span>
+                        <span>${{ total }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Shipping:</span>
+                        <span>Free</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-4">
+                        <strong>Total:</strong>
+                        <strong>${{ total }}</strong>
+                    </div>
+                    <a href="{% url 'checkout' %}" class="btn btn-nike btn-lg w-100">Proceed to Checkout</a>
+                </div>
+            </div>
+            <div class="mt-3">
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-shopping-cart fa-4x text-muted mb-4"></i>
+        <h3 class="mb-3">Your cart is empty</h3>
+        <p class="text-muted mb-4">Looks like you haven't added any items to your cart yet.</p>
+        <a href="{% url 'home' %}" class="btn btn-nike">Start Shopping</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
